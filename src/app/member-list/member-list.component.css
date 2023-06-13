@@ -51,3 +51,24 @@ table {
  .delete:hover {
    background-color: #a04545;
  }
+
+ @media only screen and (max-width: 600px) {
+  table {
+    font-size: 12px;
+  }
+
+  .nama {
+    white-space: initial;
+    overflow: initial;
+    text-overflow: initial;
+  }
+
+  button {
+    font-size: 10px;
+  }
+
+  .delete {
+    display: block;
+    margin-top: 5px;
+  }
+}
