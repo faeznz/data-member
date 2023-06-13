@@ -1,0 +1,16 @@
+.navbar {
+   display: flex;
+   flex-direction: row;
+   list-style: none;
+   padding: 20px 10px 20px 10px;
+   background-color: #d018c4;
+}
+.navbar li {
+   margin-left: 20px;
+}
+.navbar li a{
+   text-decoration: none;
+   color: #f1ecec;
+   font-size: large;
+   font-weight: bold;
+}

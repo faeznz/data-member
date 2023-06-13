@@ -1,0 +1,37 @@
+<h1>Daftar Member</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>NIK</th>
+      <th>Nama</th>
+      <th>Alamat</th>
+      <th>No HP</th>
+      <th>Email</th>
+      <th>Instagram</th>
+      <th>Tanggal Kadaluarsa</th>
+      <th>Jenis Member</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Tambahkan tombol Edit dan Delete untuk setiap baris data -->
+    <tr *ngFor="let member of members; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ member.nik }}</td>
+      <td class="nama">{{ member.nama }}</td>
+      <td>{{ member.alamat }}</td>
+      <td>{{ member.noHp }}</td>
+      <td>{{ member.email }}</td>
+      <td>{{ member.instagram }}</td>
+      <td>{{ formatTanggal(member.tanggalKadaluarsa) }}</td>
+      <td>{{ member.jenisMember }}</td>
+      <td>
+        <button (click)="editMember(member._id)">Edit</button>
+        <button (click)="deleteMember(member._id)" class="delete">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

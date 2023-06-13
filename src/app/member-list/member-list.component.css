@@ -1,0 +1,53 @@
+h1 {
+   text-align: center;
+   margin: 50px;
+   text-transform: uppercase;
+}
+table {
+   width: 97%;
+   border-collapse: collapse;
+   margin: auto;
+ }
+
+ th, td {
+   padding: 8px;
+   text-align: center;
+   border: 1px solid #555454;
+ }
+
+ th {
+   background-color: #ffbf007c;
+   color: #272626;
+   padding-top: 10px;
+   padding-bottom: 10px;
+ }
+
+ .nama {
+  text-align: left;
+ }
+
+ tr:hover {
+   background-color: #ecebea;
+ }
+
+ button {
+   padding: 5px 10px;
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   cursor: pointer;
+   border-radius: 3px;
+ }
+
+ button:hover {
+   background-color: #45a049;
+ }
+ .delete {
+   background-color: #f05c4e;
+   color: white;
+   margin-left: 10px;
+ }
+
+ .delete:hover {
+   background-color: #a04545;
+ }
