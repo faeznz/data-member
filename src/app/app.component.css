@@ -22,7 +22,19 @@
  }
  
  .navbar li {
+   margin-left: 20px;
+ }
+
+ .navbar button {
    background-color: #9E4784;
+   border-radius: 30px;
+   border: none;
+   padding: 10px 20px;
+   margin-left: 20px;
+ }
+
+ .navbar button:hover {
+   background-color: #70305d;
    border-radius: 30px;
    border: none;
    padding: 10px 20px;
@@ -33,7 +45,7 @@
    margin-left: 0;
  }
  
- .navbar li a {
+ .navbar li button {
    text-decoration: none;
    color: #ebebeb;
    font-weight: bold;
@@ -41,5 +53,6 @@
  }
  .navbar li i {
    color: #ebebeb;
+   margin-right: 15px;
  }
  

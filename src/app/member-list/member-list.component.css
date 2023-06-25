@@ -2,6 +2,7 @@ h1 {
    text-align: center;
    margin: 50px;
    text-transform: uppercase;
+   color: #f1f1f1;
 }
 table {
    width: 97%;
@@ -28,12 +29,12 @@ table {
  }
 
  button {
-   padding: 5px 10px;
+   padding: 8px 15px;
    background-color: #4CAF50;
    color: white;
    border: none;
    cursor: pointer;
-   border-radius: 3px;
+   border-radius: 20px;
  }
 
  button:hover {
