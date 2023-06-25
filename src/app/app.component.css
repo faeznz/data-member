@@ -1,16 +1,41 @@
 .navbar {
    display: flex;
-   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   background-color: #ff9100;
+   padding: 20px;
+ }
+ 
+ .navbar h1 {
+   margin-left: 30px;
+   color: #363636;
+ }
+ 
+ .navbar ul {
+   display: flex;
    list-style: none;
-   padding: 20px 10px 20px 10px;
-   background-color: #d018c4;
-}
-.navbar li {
+   margin-right: 30px;
+   padding: 0;
+ }
+ 
+ .navbar li {
+   background-color: #00bdca;
+   border-radius: 30px;
+   padding: 10px 20px;
    margin-left: 20px;
-}
-.navbar li a{
+ }
+ 
+ .navbar li:first-child {
+   margin-left: 0;
+ }
+ 
+ .navbar li a {
    text-decoration: none;
-   color: #f1ecec;
-   font-size: large;
+   color: #363636;
    font-weight: bold;
-}
+   margin-left: 10px;
+ }
+ .navbar li i {
+   color: #363636;
+ }
+ 
