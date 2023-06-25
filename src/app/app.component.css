@@ -1,14 +1,17 @@
+* {
+   background-color: transparent;
+}
 .navbar {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   background-color: #ff9100;
+   background-color: #66347F;
    padding: 20px;
  }
  
  .navbar h1 {
    margin-left: 30px;
-   color: #363636;
+   color: #ebebeb;
  }
  
  .navbar ul {
@@ -19,8 +22,9 @@
  }
  
  .navbar li {
-   background-color: #00bdca;
+   background-color: #9E4784;
    border-radius: 30px;
+   border: none;
    padding: 10px 20px;
    margin-left: 20px;
  }
@@ -31,11 +35,11 @@
  
  .navbar li a {
    text-decoration: none;
-   color: #363636;
+   color: #ebebeb;
    font-weight: bold;
    margin-left: 10px;
  }
  .navbar li i {
-   color: #363636;
+   color: #ebebeb;
  }
  

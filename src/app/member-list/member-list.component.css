@@ -12,22 +12,19 @@ table {
  th, td {
    padding: 8px;
    text-align: center;
-   border: 1px solid #555454;
+   border: 1px solid #818181;
+   background-color: #f1f1f1;
  }
 
  th {
-   background-color: #ff9100;
-   color: #272626;
+   background-color: #453f75;
+   color: #f1f1f1;
    padding-top: 10px;
    padding-bottom: 10px;
  }
 
  .nama {
   text-align: left;
- }
-
- tr:hover {
-   background-color: #ecebea;
  }
 
  button {
