@@ -3,5 +3,8 @@
 * {
    font-family: 'Poppins', sans-serif;
    margin: 0;
-   background-color: #8d6d9c;
+   /* background-color: #8d6d9c; */
+}
+body{
+   background: linear-gradient(rgba(9, 1, 37, 0.8), rgba(9, 1, 37, 0.8), rgba(9, 1, 37, 0.8)), url(./assets/bg.png);
 }

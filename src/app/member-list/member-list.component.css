@@ -13,20 +13,27 @@ table {
  th, td {
    padding: 8px;
    text-align: center;
-   border: 1px solid #818181;
-   background-color: #f1f1f1;
+   border: 1px solid #f1f1f15b;
+   background-color: rgba(237, 234, 255, 0.7);
  }
 
  th {
-   background-color: #453f75;
-   color: #f1f1f1;
-   padding-top: 10px;
-   padding-bottom: 10px;
- }
+  background-color: rgba(114, 103, 179, 0.5);
+  color: #f1f1f1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
 
  .nama {
   text-align: left;
  }
+
+ .action {
+  display: flex;
+  flex-direction: row;
+ }
+
 
  button {
    padding: 8px 15px;
@@ -35,6 +42,9 @@ table {
    border: none;
    cursor: pointer;
    border-radius: 20px;
+   font-size: medium;
+   margin: 5px;
+   width: 100px;
  }
 
  button:hover {
@@ -43,7 +53,6 @@ table {
  .delete {
    background-color: #f05c4e;
    color: white;
-   margin-left: 10px;
  }
 
  .delete:hover {

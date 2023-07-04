@@ -19,8 +19,7 @@ form {
 }
 
  input[type="text"],
- input[type="email"],
- input[type="date"],
+ input[type="password"],
  select {
    width: 70%;
    padding: 8px 15px 8px 15px;
@@ -42,7 +41,6 @@ form {
    border: none;
    border-radius: 20px;
    cursor: pointer;
-   font-size: medium;
  }
 
  button[type="submit"]:hover {

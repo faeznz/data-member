@@ -9,13 +9,18 @@ import { AppComponent } from './app.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { AddMemberComponent } from './add-member/add-member.component';
 import { EditMemberComponent } from './edit-member/edit-member.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { AuthGuard } from './auth.Guard';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MemberListComponent,
     AddMemberComponent,
-    EditMemberComponent
+    EditMemberComponent,
+    LoginPageComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
@@ -23,10 +28,13 @@ import { EditMemberComponent } from './edit-member/edit-member.component';
     HttpClientModule,
     FormsModule, 
     RouterModule.forRoot([
-      { path: '', component: MemberListComponent },
-      { path: 'tambah', component: AddMemberComponent },
-      { path: 'edit', component: EditMemberComponent },
-      { path: 'edit-member/:id', component: EditMemberComponent },
+      // { path: '', component: MemberListComponent},
+      { path: '', component: MemberListComponent, canActivate: [AuthGuard] },
+      { path: 'login', component: LoginPageComponent },
+      { path: 'daftar', component: SignupPageComponent },
+      { path: 'tambah', component: AddMemberComponent, canActivate: [AuthGuard] },
+      { path: 'edit', component: EditMemberComponent, canActivate: [AuthGuard]  },
+      { path: 'edit-member/:id', component: EditMemberComponent, canActivate: [AuthGuard]  },
       { path: '**', redirectTo: '' }
     ])
   ],

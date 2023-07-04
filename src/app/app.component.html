@@ -2,10 +2,21 @@
   <div class="navbar">
     <h1>Data Member</h1>
     <ul>
-      <li><button routerLink="/"><i class="fas fa-list-ul"></i>Daftar Member</button></li>
+      <li><button routerLink="/dashboard"><i class="fas fa-list-ul"></i>Daftar Member</button></li>
       <li><button routerLink="/tambah"><i class="fas fa-plus"></i>Tambah Member</button></li>
+      <li>
+        <ng-container *ngIf="authService.isLoggedIn(); else showLoginButton">
+          <!-- Tombol Logout -->
+          <button (click)="logout()"><i class="fas fa-sign-out-alt"></i>Logout</button>
+        </ng-container>
+        <ng-template #showLoginButton>
+          <!-- Tombol Login -->
+          <button routerLink="/login"><i class="fas fa-sign-in-alt"></i>Login</button>
+        </ng-template>
+      </li>
     </ul>
   </div>
 </nav>
+
 
 <router-outlet></router-outlet>

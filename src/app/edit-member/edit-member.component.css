@@ -11,10 +11,11 @@ form {
 }
 
 label {
-  display: flex;
-  margin-left: 128px;
-  margin-bottom: 5px;
-  font-weight: bold;
+ display: flex;
+ margin-left: 128px;
+ margin-bottom: 5px;
+ font-size: large;
+ color: #f1f1f1;
 }
 
 input[type="text"],
@@ -23,7 +24,7 @@ input[type="date"],
 select {
   width: 70%;
   padding: 8px 15px 8px 15px;
-  margin-bottom: 10px;
+  margin-bottom: 32px;
   background-color: #f1f1f1;
   border: 1px solid #f1f1f1;
   border-radius: 30px;
@@ -31,8 +32,8 @@ select {
 }
 
 select option {
-  background-color: #f1f1f1;
- }
+ background-color: #f1f1f1;
+}
 
 button[type="submit"] {
   padding: 10px 50px;
@@ -41,6 +42,7 @@ button[type="submit"] {
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  font-size: medium;
 }
 
 button[type="submit"]:hover {

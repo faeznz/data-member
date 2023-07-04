@@ -2,7 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const Member = require('./models/member.model');
+const User = require('./models/login.model');
 const bodyParser = require('body-parser');
+
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
 
 
 const app = express();
@@ -107,6 +115,108 @@ app.delete('/members/:id', (req, res) => {
       res.status(500).json({ error: 'Failed to delete member' });
     });
 });
+
+// LOGIN CODE
+
+// Middleware untuk pengaturan Passport.js
+app.use(passport.initialize());
+
+// Konfigurasi Passport.js untuk strategi autentikasi lokal
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: 'username',
+      passwordField: 'password'
+    },
+    (username, password, done) => {
+      User.findOne({ username })
+        .then((user) => {
+          if (!user) {
+            return done(null, false, { message: 'Incorrect username' });
+          }
+          bcrypt.compare(password, user.password)
+            .then((result) => {
+              if (!result) {
+                return done(null, false, { message: 'Incorrect password' });
+              }
+              return done(null, user);
+            })
+            .catch((error) => done(error));
+        })
+        .catch((error) => done(error));
+    }
+  )
+);
+
+// Konfigurasi Passport.js untuk strategi JWT
+const jwtOptions = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: 'secret_key' // Ganti dengan kunci rahasia yang lebih aman
+};
+
+passport.use(
+  new JwtStrategy(jwtOptions, (payload, done) => {
+    User.findById(payload.sub)
+      .then((user) => {
+        if (user) {
+          return done(null, user);
+        } else {
+          return done(null, false);
+        }
+      })
+      .catch((error) => done(error, false));
+  })
+);
+
+
+
+// Mengizinkan Express untuk membaca data dari body dalam format JSON
+app.use(express.json());
+
+// Endpoint untuk membuat pengguna baru
+app.post('/users', (req, res) => {
+  const { username, password } = req.body;
+
+  bcrypt.hash(password, 10)
+    .then((hashedPassword) => {
+      const user = new User({ username, password: hashedPassword });
+      user.save()
+        .then(() => {
+          res.status(201).json({ message: 'User created successfully' });
+        })
+        .catch((error) => {
+          console.error('Failed to save user', error);
+          res.status(500).json({ error: 'Failed to save user' });
+        });
+    })
+    .catch((error) => {
+      console.error('Failed to hash password', error);
+      res.status(500).json({ error: 'Failed to hash password' });
+    });
+});
+
+
+// Endpoint untuk login dan mendapatkan token JWT
+app.post('/login', (req, res, next) => {
+  passport.authenticate('local', { session: false }, (error, user, info) => {
+    if (error) {
+      console.error('Authentication error', error);
+      res.status(500).json({ error: 'Authentication error' });
+    } else if (!user) {
+      res.status(401).json({ error: info.message });
+    } else {
+      const payload = { sub: user._id };
+      const token = jwt.sign(payload, jwtOptions.secretOrKey, { expiresIn: '1h' });
+      res.json({ token });
+    }
+  })(req, res, next);
+});
+
+// Endpoint yang memerlukan autentikasi (contoh)
+app.get('/members', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json({ message: 'You have accessed the protected profile route' });
+});
+
  
 
 app.listen(port, () => {

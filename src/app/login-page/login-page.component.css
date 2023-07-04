@@ -19,8 +19,7 @@ form {
 }
 
  input[type="text"],
- input[type="email"],
- input[type="date"],
+ input[type="password"],
  select {
    width: 70%;
    padding: 8px 15px 8px 15px;
@@ -62,4 +61,9 @@ form {
  }
  button {
    margin: 10px;
+ }
+
+ .daftar {
+  color: #f1f1f1;
+  text-decoration: none;
  }
