@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-member-list',
@@ -11,7 +12,7 @@ import { Location } from '@angular/common';
 export class MemberListComponent implements OnInit {
   members?: any[];
 
-  constructor(private http: HttpClient, private router: Router, private location: Location) { }
+  constructor(private http: HttpClient, private router: Router, private location: Location, private authService: AuthService) { }
 
   ngOnInit() {
     this.getMembers();
@@ -31,15 +32,13 @@ export class MemberListComponent implements OnInit {
   }
   
   editMember(id: string) {
-    // Navigasi ke halaman edit dengan memberikan ID member sebagai parameter
-    // Anda perlu mengatur rute di file app-routing.module.ts
     this.router.navigate(['/edit-member', id]);
   }
 
   deleteMember(id: string) {
     // Mengambil data member berdasarkan ID sebelum menghapus
-    const memberToDelete = this.members?.find(member => member._id === id);
-    if (!memberToDelete) {
+    const memberIndex = this.members?.findIndex(member => member._id === id);
+    if (memberIndex === undefined || memberIndex === -1) {
       console.log('Member not found');
       return;
     }
@@ -47,14 +46,19 @@ export class MemberListComponent implements OnInit {
     this.http.delete(`http://localhost:3000/members/${id}`)
       .subscribe(() => {
         console.log('Member deleted successfully');
-        // Lakukan tindakan setelah menghapus member, jika diperlukan
-        const memberName = memberToDelete.nama; // Mengambil nama member yang dihapus
-        alert(`Berhasil menghapus member ${memberName}`);
-        window.location.reload();
+        if (this.members && memberIndex !== undefined) {
+          this.members.splice(memberIndex, 1);
+          // Lakukan tindakan setelah menghapus member, jika diperlukan
+          const memberName = this.members[memberIndex]?.nama;
+          alert(`Berhasil menghapus member ${memberName}`);
+        }
       }, error => {
         console.log('Failed to delete member', error);
       });
   }
   
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
 
 }

@@ -32,7 +32,9 @@ app.use((req, res, next) => {
  });
 
 // Membuat koneksi ke MongoDB Atlas
-const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
+// const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
+// const uri = 'mongodb://127.0.0.1:27017/datamember';
+const uri = 'mongodb://0.0.0.0:27017/datamember';
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
@@ -151,7 +153,7 @@ passport.use(
 // Konfigurasi Passport.js untuk strategi JWT
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'secret_key' // Ganti dengan kunci rahasia yang lebih aman
+  secretOrKey: 'secret_key' 
 };
 
 passport.use(
@@ -213,7 +215,7 @@ app.post('/login', (req, res, next) => {
 });
 
 // Endpoint yang memerlukan autentikasi (contoh)
-app.get('/members', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/membrs', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({ message: 'You have accessed the protected profile route' });
 });
 

@@ -21,12 +21,18 @@ export class LoginPageComponent implements OnInit {
     this.authService.login(this.username, this.password).subscribe(
       response => {
         console.log('Login successful');
-        alert('Login berhasil, Selamat datang!'); // Menampilkan pesan selamat datang
-        this.router.navigate(['/members']); // Contoh: Redirect ke halaman members setelah login berhasil
+        // alert('Login berhasil, Selamat datang!'); 
+        this.router.navigate(['/members']); 
       },
       error => {
         console.error('Login error', error);
-        alert('Login gagal!'); // Menampilkan pesan login gagal
+        if (error.error && error.error.error === 'Incorrect username') {
+          alert('Username tidak ditemukan');
+        } else if (error.error && error.error.error === 'Incorrect password') {
+          alert('Password yang dimasukkan salah');
+        } else {
+          alert('Login gagal!'); 
+        }
       }
     );
   }

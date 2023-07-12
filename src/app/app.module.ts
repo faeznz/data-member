@@ -29,7 +29,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
     FormsModule, 
     RouterModule.forRoot([
       // { path: '', component: MemberListComponent},
-      { path: '', component: MemberListComponent, canActivate: [AuthGuard] },
+      { path: '', component: MemberListComponent, },
       { path: 'login', component: LoginPageComponent },
       { path: 'daftar', component: SignupPageComponent },
       { path: 'tambah', component: AddMemberComponent, canActivate: [AuthGuard] },

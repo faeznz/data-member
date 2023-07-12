@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
-import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private serverUrl = 'http://localhost:3000'; // Sesuaikan URL dengan server Express Anda
+  private serverUrl = 'http://localhost:3000'; 
   private loggedIn = false; // Menyimpan status login pengguna
+  private username: string = '';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -19,9 +19,9 @@ export class AuthService {
       .pipe(
         map(response => {
           // Simpan token JWT yang diterima dalam local storage atau cookie
-          // Anda juga dapat menyimpan token di bidang lain yang sesuai dengan kebutuhan Anda
           localStorage.setItem('token', response.token);
           this.loggedIn = true;
+          this.username = username;
           return response;
         })
       );
@@ -30,10 +30,14 @@ export class AuthService {
   logout(): void {
     this.loggedIn = false;
     localStorage.removeItem('token'); // Hapus token dari local storage atau cookie
-    this.router.navigate(['/login']); // Redirect ke halaman login setelah logout
+    this.router.navigate(['/']); // Redirect ke halaman login setelah logout
   }
 
   isLoggedIn(): boolean {
     return this.loggedIn;
+  }
+
+  getUsername(): string {
+    return this.username;
   }
 }

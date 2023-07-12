@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(45deg, rgba(35, 29, 82, 0.8), rgba(105, 99, 147, 0.8));
+  background: linear-gradient(45deg, rgba(65, 55, 141, 0.8), rgba(119, 42, 190, 0.8));
   padding: 20px;
 }
 
@@ -27,7 +27,7 @@
  }
 
  .navbar button {
-   background-color: #9E4784;
+   background-color: #ffbb00;
    border-radius: 30px;
    border: none;
    padding: 10px 20px;
@@ -35,7 +35,7 @@
  }
 
  .navbar button:hover {
-   background-color: #70305d;
+   background-color: #dda200;
    border-radius: 30px;
    border: none;
    padding: 10px 20px;
@@ -48,12 +48,41 @@
  
  .navbar li button {
    text-decoration: none;
-   color: #ebebeb;
+   color: #570c9c;
    font-weight: bold;
    margin-left: 10px;
- }
- .navbar li i {
-   color: #ebebeb;
-   margin-right: 15px;
+   letter-spacing: 1px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   font-size: 14px;
  }
  
+ .navbar li i {
+   color: #762abe;
+   margin-right: 15px;
+   font-size: large;
+ }
+ 
+ .navbar li button.login-button {
+  background-color: #4CAF50; 
+  color: #ffffff;
+}
+
+ .navbar li button.login-button:hover {
+  background-color: #348837; 
+  color: #ffffff;
+}
+
+.navbar li button.logout-button {
+  background-color: #f05c4e; 
+  color: #ffffff;
+}
+
+.navbar li button.logout-button:hover {
+  background-color: #c2392d; 
+  color: #ffffff;
+}
+
+

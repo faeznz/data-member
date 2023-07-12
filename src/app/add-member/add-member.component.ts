@@ -25,6 +25,7 @@ export class AddMemberComponent implements OnInit {
         this.member = {};
       }, error => {
         console.log('Failed to add member', error);
+        alert('Isikan data secara lengkap!');
       });
   }
 }
