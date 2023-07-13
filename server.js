@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
 // const uri = 'mongodb://127.0.0.1:27017/datamember';
 // const uri = 'mongodb://0.0.0.0:27017/datamember';
+mongoose.set('strictQuery', true);
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
@@ -42,6 +43,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch(error => {
     console.log('Failed to connect to MongoDB', error);
   });
+
 
 // Mengatur rute untuk mengambil data member
 app.get('/members', (req, res) => {
