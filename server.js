@@ -32,9 +32,9 @@ app.use((req, res, next) => {
  });
 
 // Membuat koneksi ke MongoDB Atlas
-// const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
 // const uri = 'mongodb://127.0.0.1:27017/datamember';
-const uri = 'mongodb://0.0.0.0:27017/datamember';
+// const uri = 'mongodb://0.0.0.0:27017/datamember';
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
