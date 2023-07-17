@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Member = require('../models/member.model');
-const User = require('../models/login.model');
+const Member = require('./models/member.model');
+const User = require('./models/login.model');
 const bodyParser = require('body-parser');
 
 const passport = require('passport');
@@ -14,7 +14,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 9001;
 
 app.use(cors());
 
@@ -32,8 +32,8 @@ app.use((req, res, next) => {
  });
 
 // Membuat koneksi ke MongoDB Atlas
-const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
-// const uri = 'mongodb://127.0.0.1:27017/datamember';
+// const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb://127.0.0.1:27017/datamember';
 // const uri = 'mongodb://0.0.0.0:27017/datamember';
 mongoose.set('strictQuery', true);
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -227,5 +227,4 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-// Export objek app sebagai server
-module.exports.handler = { server: app };
+
