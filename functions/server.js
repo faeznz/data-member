@@ -227,4 +227,5 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-module.exports = { server };
+// Export objek app sebagai server
+module.exports = { server: app };
