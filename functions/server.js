@@ -228,4 +228,4 @@ app.listen(port, () => {
 });
 
 // Export objek app sebagai server
-module.exports = { server: app };
+module.exports.handler = { server: app };
