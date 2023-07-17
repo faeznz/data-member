@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Member = require('./models/member.model');
-const User = require('./models/login.model');
+const Member = require('../models/member.model');
+const User = require('../models/login.model');
 const bodyParser = require('body-parser');
 
 const passport = require('passport');
