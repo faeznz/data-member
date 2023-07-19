@@ -23,12 +23,10 @@ app.use((req, res, next) => {
    next();
  });
 
-// Membuat koneksi ke MongoDB Atlas
-const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
+mongoose.set('strictQuery', true);
+mongoose.connect('mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 // const uri = 'mongodb://127.0.0.1:27017/datamember';
 // const uri = 'mongodb://0.0.0.0:27017/datamember';
-mongoose.set('strictQuery', true);
-mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
   })
@@ -212,7 +210,7 @@ app.get('/membrs', passport.authenticate('jwt', { session: false }), (req, res) 
   res.json({ message: 'You have accessed the protected profile route' });
 });
 
-const PORT = process.env.PORT
+const PORT = 3000;
 
 app.listen(PORT, () => {
   console.log( "Server is running on port" + PORT)
