@@ -12,18 +12,10 @@ const jwt = require('jsonwebtoken');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 
-
 const app = express();
-const port = process.env.PORT || 9001;
-
 app.use(cors());
-
 app.use(bodyParser.json());
-
-
 app.use(express.json());
-
-
 app.use((req, res, next) => {
    res.header('Access-Control-Allow-Origin', '*');
    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -31,19 +23,14 @@ app.use((req, res, next) => {
    next();
  });
 
-// Membuat koneksi ke MongoDB Atlas
-const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
-// const uri = 'mongodb://127.0.0.1:27017/datamember';
-// const uri = 'mongodb://0.0.0.0:27017/datamember';
 mongoose.set('strictQuery', true);
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
   })
   .catch(error => {
     console.log('Failed to connect to MongoDB', error);
   });
-
 
 // Mengatur rute untuk mengambil data member
 app.get('/members', (req, res) => {
@@ -221,10 +208,8 @@ app.get('/membrs', passport.authenticate('jwt', { session: false }), (req, res) 
   res.json({ message: 'You have accessed the protected profile route' });
 });
 
- 
+const PORT = process.env.PORT
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log( "Server is running on port" + PORT)
 });
-
-
