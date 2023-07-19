@@ -23,13 +23,10 @@ app.use((req, res, next) => {
    next();
  });
 
-<<<<<<< HEAD
-=======
 // Membuat koneksi ke MongoDB Atlas
 const uri = 'mongodb+srv://faeznz:faeznz@data.h3xudui.mongodb.net/?retryWrites=true&w=majority';
 // const uri = 'mongodb://127.0.0.1:27017/datamember';
 // const uri = 'mongodb://0.0.0.0:27017/datamember';
->>>>>>> 32411cc0a0c0bc1de6dd3e2604365e8401616bea
 mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
